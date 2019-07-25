@@ -15,7 +15,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 50vw;
+        width: 100vw;
         height: 60px;
         padding: 12px 0 0;
       }
@@ -32,9 +32,9 @@
         cursor: pointer;
         background: #0498E9;
         position: fixed;
-        top: 0;
-        left: 50;
-        width: 50vw;
+        top: 60;
+        left: 0;
+        width: 100vw;
         height: 60px;
         padding: 12px 0 0;
       }
@@ -62,7 +62,7 @@
     <div id="add">Add<div>
     <div id="generate">Generate<div>
     <textarea id="text" autocorrect="off" autocomplete="off"></textarea>
-    <script type="text/javascript" src="./ngram.js" defer></script>
+    <script type="text/javascript" src="./ngram.js"></script>
     <script type="text/javascript">
       const ngram = new NGram(4);
       document.getElementById('add').addEventListener('click', () => {
