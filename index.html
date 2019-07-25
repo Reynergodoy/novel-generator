@@ -16,7 +16,7 @@
         top: 0;
         left: 0;
         width: 100vw;
-        height: 60px;
+        height: 30px;
         padding: 12px 0 0;
       }
       #add:hover {
@@ -32,10 +32,10 @@
         cursor: pointer;
         background: #0498E9;
         position: fixed;
-        top: 60;
+        top: 30;
         left: 0;
         width: 100vw;
-        height: 60px;
+        height: 30px;
         padding: 12px 0 0;
       }
       #generate:hover {
@@ -71,7 +71,7 @@
         ngram.add(content);
       });
       document.getElementById('generate').addEventListener('click', () => {
-        ngram.generate(1000);
+        console.log(ngram.generate(1000));
       });
     </script>
   </body>
