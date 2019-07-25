@@ -5,7 +5,7 @@
 **/
 class NGram {
   constructor (n) {
-    this.n = n;
+    this.n = (typeof n === "number") ? n : 1;
     this.placeholder = '';
     this.grams = {};
   }
@@ -13,6 +13,7 @@ class NGram {
     const n = this.n;
     
     if (n === 0) return;
+    if (typeof resource !== 'string') return;
     
     this.placeholder = resource.substring(0, n);
     
@@ -31,10 +32,31 @@ class NGram {
     }
     return this;
   }
-  generate (characters) {
+  generate (iterations) {
+    if (typeof iterations !== "number") return;
+    const n = this.n;
+    const grams = this.grams;
     let gen = this.placeholder;
     let gram = gen;
-    let choices = this.grams[gram];
+    for (let i = 0; i < iterations; i++) {
+      const choices = this.grams[gram];
+      let total = 0;
+      for (const choice in choices) {
+        total += choices[choice];
+      }
+      let random = Math.ceil(Math.random() * total);
+      total = 0;
+      for (const choice in choices) {
+        total += choices[choice];
+        if (total >= random) {
+          gen += choice;
+          break;
+        }
+      }
+      const _gLen = gen.length;
+      gram = gen.substring(_gLen - n, _gLen);
+    }
+    return gen;
   }
   clear () {
     this.n = 0;
