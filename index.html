@@ -5,6 +5,74 @@
     <title>Novel Generator</title>
   </head>
   <body>
+    <style>
+      #add {
+        font-size: 30px;
+        color: #FFF;
+        text-align: center;
+        cursor: pointer;
+        background: #0998E9;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 50vw;
+        height: 60px;
+        padding: 12px 0 0;
+      }
+      #add:hover {
+        background: #0089DA;
+      }
+      #add:active {
+        background: #0080CB;
+      }
+      #generate {
+        font-size: 30px;
+        color: #FFF;
+        text-align: center;
+        cursor: pointer;
+        background: #0498E9;
+        position: fixed;
+        top: 0;
+        left: 50;
+        width: 50vw;
+        height: 60px;
+        padding: 12px 0 0;
+      }
+      #generate:hover {
+        background: #0489DA;
+      }
+      #generate:active {
+        background: #0480CB;
+      }
+      #text, #text:focus {
+        font-family: Menlo, Consolas, monospace;
+        font-size: 15px;
+        color: #000;
+        background: #FFF;
+        border: none;
+        outline: none;
+        resize: none;
+        width: 100vw;
+        height: 100vh;
+        padding: 70px 10px 10px;
+        margin: 0;
+        overflow: scroll;
+      }
+    <style>
+    <div id="add">Add<div>
+    <div id="generate">Generate<div>
+    <textarea id="text" autocorrect="off" autocomplete="off"></textarea>
     <script type="text/javascript" src="./ngram.js" defer></script>
+    <script type="text/javascript">
+      const ngram = new NGram(4);
+      document.getElementById('add').addEventListener('click', () => {
+        const content = document.getElementById('text').value;
+        if (!content) return;
+        ngram.add(content);
+      });
+      document.getElementById('generate').addEventListener('click', () => {
+        ngram.generate(1000);
+      });
+    </script>
   </body>
 </html>
