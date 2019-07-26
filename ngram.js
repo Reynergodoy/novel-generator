@@ -61,6 +61,7 @@ class NGram {
   clear () {
     this.n = 0;
     this.grams = {};
+    this.placeholder = '';
     return this;
   }
 }
