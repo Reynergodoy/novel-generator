@@ -44,7 +44,7 @@ class NGram {
       for (const choice in choices) {
         total += choices[choice];
       }
-      let random = Math.ceil(Math.random() * total);
+      const random = Math.ceil(Math.random() * total);
       total = 0;
       for (const choice in choices) {
         total += choices[choice];
