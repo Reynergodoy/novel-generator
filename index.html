@@ -55,15 +55,35 @@
 		position: fixed;
 		top: 20%;
         width: 98vw;
-        height: 75vh;
+        height: 30vh;
         padding: 10px 10px 10px;
         margin: 0;
         overflow: scroll;
       }
+	  #generatedText {
+		font-family: Menlo, Consolas, monospace;
+        font-size: 15px;
+        color: #000;
+        background: #FFF;
+        border: 1px solid black;
+        outline: none;
+        resize: none;
+		position: fixed;
+		top: 55%;
+        width: 98vw;
+        height: 40vh;
+        padding: 10px 10px 10px;
+        margin: 0;
+        overflow: scroll;
+	  }
     </style>
+	
     <div id="add">Add</div>
     <div id="generate">Generate</div>
-    <textarea id="text" autocorrect="off" autocomplete="off"></textarea>
+    <textarea id="text" autocorrect="off" autocomplete="off" autofocus="autofocus"></textarea>
+	<textarea id="generatedText" onkeydown="return false"></textarea>
+	
+	
     <script type="text/javascript" src="./ngram.js"></script>
     <script type="text/javascript">
       const ngram = new NGram(4);
@@ -71,9 +91,10 @@
         const content = document.getElementById('text').value;
         if (!content) return;
         ngram.add(content);
+		document.getElementById('text').value = "";
       });
       document.getElementById('generate').addEventListener('click', () => {
-        console.log(ngram.generate(1000));
+		document.getElementById('generatedText').value = ngram.generate(1000);
       });
     </script>
   </body>
