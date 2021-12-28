@@ -39,7 +39,7 @@ class NGram {
     let gen = this.placeholder;
     let gram = gen;
     for (let i = 0; i < iterations; i++) {
-      const choices = this.grams[gram];
+      const choices = grams[gram];
       let total = 0;
       for (const choice in choices) {
         total += choices[choice];
